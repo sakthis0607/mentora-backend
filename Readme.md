@@ -76,3 +76,12 @@ curl -X POST http://localhost:5000/llm/summarize \
 - **Minimum Length:** The text must be at least 50 characters long, otherwise a 400 Bad Request is returned.
 - **Maximum Length:** The text is capped at 10,000 characters to prevent payload abuse, returning a 413 Payload Too Large error if exceeded.
 - **Rate Limiting:** A lightweight \`express-rate-limit\` is applied to this route, allowing a maximum of 5 requests per minute per IP to protect the external API.
+
+LLM Provider (Groq): I chose Groq (using llama-3.1-8b-instant) because it offers an exceptionally fast inference speed and a generous free tier for developers, ensuring the summarization feature is responsive without requiring a paid subscription.Database Choice.
+
+ (MongoDB): I used MongoDB for its flexible schema design, which allows for easy scaling of user profiles (Parents/Mentors) and nested relationship mapping for Lessons and Sessions.
+ 
+ Security (JWT & Bcrypt): To follow industry standards for security, I implemented JWT for stateless authentication and bcrypt for one-way password hashing to protect user credentials.
+ 
+ Validation Logic: I set a minimum limit of 50 characters for summarization to ensure the LLM has enough context to provide a meaningful summary, fulfilling the requirement for basic input validation.
+ 
